@@ -29,16 +29,6 @@ class ContentListViewController: BaseListViewController<ItemCell> {
         self.colorScheme = colorScheme
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,12 +43,14 @@ class ContentListViewController: BaseListViewController<ItemCell> {
                 } else {
                     if let link = item.url, let url = URL(string: link) {
                         let vc = SFSafariViewController(url: url)
+                        vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     }
                 }
             } else {
                 if let link = item.url, let url = URL(string: link) {
                     let vc = SFSafariViewController(url: url)
+                    vc.modalPresentationStyle = .overFullScreen
                     self.present(vc, animated: true, completion: nil)
                 }
             }
