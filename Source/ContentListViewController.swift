@@ -38,7 +38,7 @@ class ContentListViewController: BaseListViewController<ItemCell> {
         self.onItemSelect = { item in
             if item.isPdf {
                 if #available(iOS 11.0, *) {
-                    let vc = ContentItemDetailsViewController(with: self.data?.colorScheme, data: item)
+                    let vc = ContentItemDetailsViewController(with: self.colorScheme, data: item)
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     if let link = item.url, let url = URL(string: link) {
